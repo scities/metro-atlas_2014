@@ -1,7 +1,10 @@
 # Author: Remi Louf <remilouf@sciti.es>
 # Date:   24/03/2016
 
-blockgroups: download_blockgroups
+
+blockgroups: download_blockgroups  shapefile_blockgroups adjacency_blockgroups surface_blockgroups
+tracts: download_tracts  shapefile_tracts adjacency_tracts surface_tracts
+counties: download_counties  shapefile_counties adjacency_counties surface_counties
 
 
 #################
@@ -78,18 +81,17 @@ download_counties: data/shp/us/counties.shp
 ##################
 ## Prepare data ##
 ##################
-#
-# Crosswalks
-## Crosswalk Counties and CBSA | CBSA names
-data/names/cbsa_names.txt data/crosswalks/cbsa_county.txt:
-	mkdir -p data/names
-	mkdir -p data/crosswalks
+
+# Extract CBSA names
+data/names/cbsa_names.txt:
+	mkdir -p $(dir)
 	python2 bin/crosswalks/cbsa_county.py
+
 
 
 # Blockgroups
 ## Crosswalk blockgroups and CBSA
-data/crosswalks/cbsa_blockgroup:
+data/crosswalks/cbsa_blockgroup.txt:
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
@@ -135,6 +137,9 @@ surface_tract:
 
 # Counties
 ## Crosswalk counties and CBSA
+data/crosswalks/cbsa_county.txt:
+	mkdir -p $(dir)
+	python2 bin/crosswalks/cbsa_county.py
 
 ## Shapefile counties for each CBSA
 shapefile_county:
