@@ -1,6 +1,6 @@
-""" county_cbsa.py
+""" cbas_names.py
 
-Extract the crosswalk between counties and CBSA from the list given by the OMB.
+Extract the names of CBSAs from the list given by the OMB.
 """
 from xlrd import open_workbook
 
@@ -35,11 +35,9 @@ for sheet_name in book.sheet_names():
     
 
     # Assemble
-    crosswalk = {}
+    name_list = {}
     for name, c, county in zip(names, cbsa_fips, county_fips):
-        if c not in crosswalk:
-            crosswalk[c] = []
-        crosswalk[c].append(county)
+        name_list[c] = name
 
     book.unload_sheet(sheet_name) 
 
@@ -49,9 +47,8 @@ for sheet_name in book.sheet_names():
 # WRITE DATA
 #
 
-# Crosswalk CBSA to county
-with open('data/crosswalks/cbsa_county.txt', 'w') as output:
-    output.write('CBSA FIPS CODE\tCOUNTY FIPS CODE\n')
-    for cb in crosswalk:
-        for co in crosswalk[cb]:
-            output.write('%s\t%s\n'%(cb, co))
+# Names
+with open('data/names/cbsa_names.txt', 'w') as output:
+    output.write('CBSA FIPS CODE\tCBSA NAME\n')
+    for c in name_list:
+        output.write('%s\t%s\n'%(c, name_list[c]))

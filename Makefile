@@ -85,7 +85,7 @@ download_counties: data/shp/us/counties.shp
 # Extract CBSA names
 data/names/cbsa_names.txt:
 	mkdir -p $(dir)
-	python2 bin/crosswalks/cbsa_county.py
+	python2 bin/cbsa_names.py
 
 
 
