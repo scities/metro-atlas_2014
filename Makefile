@@ -83,15 +83,15 @@ download_counties: data/shp/us/counties.shp
 ##################
 
 # Extract CBSA names
-data/names/cbsa_names.txt:
-	mkdir -p $(dir)
-	python2 bin/cbsa_names.py
+data/misc/cbsa_names.txt: data/gz/List1.xls
+	mkdir -p $(dir $@)
+	python2 bin/names/cbsa_names.py
 
 
 
 # Blockgroups
 ## Crosswalk blockgroups and CBSA
-data/crosswalks/cbsa_blockgroup.txt:
+data/crosswalks/cbsa_blockgroup.txt: data/crosswalks/cbsa_county.txt
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
@@ -137,8 +137,8 @@ surface_tract:
 
 # Counties
 ## Crosswalk counties and CBSA
-data/crosswalks/cbsa_county.txt:
-	mkdir -p $(dir)
+data/crosswalks/cbsa_county.txt: data/gz/List1.xls
+	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_county.py
 
 ## Shapefile counties for each CBSA
