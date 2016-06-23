@@ -98,7 +98,7 @@ data/crosswalks/cbsa_blockgroup.txt: data/crosswalks/cbsa_county.txt
 ## Shapefile blockgroups for each CBSA
 shapefile_blockgroups:
 	mkdir -p data/shp/cbsa
-	python2 bin/shp/cbsa_blockgroup.py
+	python2 bin/shp/blockgroups.py
 
 ## Adjacency matrix for blockgroups
 adjacency_blockgroups:
@@ -121,7 +121,7 @@ data/crosswalks/cbsa_tract:
 ## Shapefile tracts for each CBSA
 shapefile_tracts:
 	mkdir -p data/shp/cbsa
-	python2 bin/shp/cbsa_tract.py
+	python2 bin/shp/tracts.py
 
 ## Adjacency matrix for tracts
 adjacency_tracts:
@@ -144,7 +144,7 @@ data/crosswalks/cbsa_county.txt: data/gz/List1.xls
 ## Shapefile counties for each CBSA
 shapefile_counties:
 	mkdir -p data/shp/cbsa
-	python2 bin/shp/cbsa_county.py
+	python2 bin/shp/counties.py
 
 ## Adjacency matrix for counties
 adjacency_counties:
