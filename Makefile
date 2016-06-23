@@ -96,17 +96,17 @@ data/crosswalks/cbsa_blockgroup.txt: data/crosswalks/cbsa_county.txt
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
 ## Shapefile blockgroups for each CBSA
-shapefile_blockgroup:
+shapefile_blockgroups:
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/cbsa_blockgroup.py
 
 ## Adjacency matrix for blockgroups
-adjacency_blockgroup:
+adjacency_blockgroups:
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/blockgroups.py
 
 ## Compute the surface area of blockgroups
-surface_blockgroup:
+surface_blockgroups:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/blockgroup.py
 
@@ -119,17 +119,17 @@ data/crosswalks/cbsa_tract:
 	python2 bin/crosswalks/cbsa_tract.py
 
 ## Shapefile tracts for each CBSA
-shapefile_tract:
+shapefile_tracts:
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/cbsa_tract.py
 
 ## Adjacency matrix for tracts
-adjacency_tract:
+adjacency_tracts:
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/tracts.py
 
 ## Compute the surface area of tracts
-surface_tract:
+surface_tracts:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/tract.py
 
@@ -142,17 +142,17 @@ data/crosswalks/cbsa_county.txt: data/gz/List1.xls
 	python2 bin/crosswalks/cbsa_county.py
 
 ## Shapefile counties for each CBSA
-shapefile_county:
+shapefile_counties:
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/cbsa_county.py
 
 ## Adjacency matrix for counties
-adjacency_county:
+adjacency_counties:
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/counties.py
 
 ## Compute the surface area of counties
-surface_county:
+surface_counties:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/county.py
 
