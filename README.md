@@ -1,40 +1,49 @@
-# 2014 US Metropolitan Atlas
+# US Metropolitan atlas 2014
 
-Ever worked with census data at the metropolitan level? This will save you a lot
-of time by exporting shapefiles of cities containing the delineations of
-sub-geographies.
+Provides an Atlas of the US Metropolitan areas delineated for the 2014 American
+Community Survey. Inspired by Mike Bostock's [us-atlas](https://github.com/mbostock/us-atlas).
 
-As of today, the code contained in this repository allows to output
+## Features available
 
-- Shapefiles
-- Adjacency (contiguity) matrix between units
-- Surface area of units
+Data tabulation geographical levels for the 2014 US Census:
 
-For the following levels
+* US boudaries (us)
+* MSA boundaries (msa)
+* Census Block Groups boundaries (blockgroups)
+* Census Tracts boundaries (tracts)
+* Counties boundaries (countries)
 
-- Blockgroups
-- Tracts
-- Counties
+## Future features
 
+The following features are obtained from the 2010 TIGER/Lines shapefiles and cut
+using the 2000 boundaries. Considering the conversion of 2000 TIGER/Lines files
+to shapefiles.
+
+* Roads
+* Water
+* Landmarks
 
 ## Use
 
-To output all geographies type in command line
+In the commande line, go in the folder where you cloned the repository, and type
+(to get the blockgroups)
 
-    make
+```bash
+make blockgroups
+```
 
-In order to output specific geometries
+The program will download the necessary data, and the shapefiles will be
+available in the folder `data/shp/msa_id/`
 
-    make blockgroups
-
-    make tracts
-    
-    make counties
-
+To get other geographies, type the name of other geographies in parenthesis
+above instead of 'blockgroups'. If you type `make` alone, the program will
+download and prepare all geographies.
 
 ## License
 
-The code is distributed under BSD License (see LICENSE).
+The code is distributed under the BSD License, see LICENSE.txt for more details.
 
-    Copyright (c) Scities
-    Rémi Louf <remi@sciti.es>
+```
+Copyright (c) Scities
+Rémi Louf <remi.louf@sciti.es>
+```
