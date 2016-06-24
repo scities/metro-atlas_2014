@@ -35,7 +35,7 @@ with open('data/states_list.txt') as source:
 
 
 #
-# Extract cities per MSA by iterating through shapefiles
+# Extract blockgroups per MSA by iterating through shapefiles
 #
 msa_blockgroup = {}
 for st in states:
