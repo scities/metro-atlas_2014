@@ -48,7 +48,7 @@ for i,city in enumerate(cbsa):
         os.makedirs(path)
 
     ## Save data
-    with open(path+'/%s_surface_blockgroups.txt'%(city), 'w') as output:
+    with open(path+'/blockgroups.txt', 'w') as output:
         output.write('Blockgroup FIPS\tSurface area (m^2)\n')
         for bg in blocks:
             output.write('%s\t%s\n'%(bg, blocks[bg]))

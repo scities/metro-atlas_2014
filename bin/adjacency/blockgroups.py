@@ -57,7 +57,7 @@ for i,city in enumerate(cbsa):
         os.makedirs(export_path)
 
     ## Write data
-    with open(export_path + '%s_adjacency_blockgroups.txt'%city, 'w') as output:
+    with open(export_path + 'blockgroups.txt', 'w') as output:
        output.write("BLOCKGROUP FIPS\tNEIGHBOURS FIPS\n")
        for b0 in adjacency:
            output.write("%s"%b0)
