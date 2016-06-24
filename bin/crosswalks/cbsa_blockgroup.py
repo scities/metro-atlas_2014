@@ -15,14 +15,14 @@ import collections
 #
 
 ## MSA to counties crosswalk
-county_to_msa = {}
+county_to_cbsa = {}
 with open('data/crosswalks/cbsa_county.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
     reader.next()
     for rows in reader:
         county = rows[1]
-        msa = rows[0]
-        county_to_msa[county] = msa
+        cbsa = rows[0]
+        county_to_cbsa[county] = cbsa
 
 ## List of states
 states = []
@@ -37,7 +37,7 @@ with open('data/states_list.txt') as source:
 #
 # Extract blockgroups per MSA by iterating through shapefiles
 #
-msa_blockgroup = {}
+cbsa_blockgroup = {}
 for st in states:
     blockgroups = []
     with fiona.open('data/shp/state/%s/blockgroups.shp'%st, 'r',
@@ -49,11 +49,11 @@ for st in states:
 
             ## Skip rural counties
             try:
-                msa = county_to_msa[county.encode('utf8')]
+                cbsa = county_to_cbsa[county.encode('utf8')]
 
-                if msa not in msa_blockgroup:
-                    msa_blockgroup[msa] = []
-                msa_blockgroup[msa].append(f['properties']['GEOID'])
+                if cbsa not in cbsa_blockgroup:
+                    cbsa_blockgroup[cbsa] = []
+                cbsa_blockgroup[cbsa].append(f['properties']['GEOID'])
 
             except:
                 pass 
@@ -67,8 +67,8 @@ for st in states:
 #
 with open('data/crosswalks/cbsa_blockgroup.txt', 'w') as output:
     output.write('MSA FIP\tBLOCKGROUP FIP\n')
-    for msa in msa_blockgroup:
+    for cbsa in cbsa_blockgroup:
         ## Remove duplicates
-        bgs = list(set(msa_blockgroup[msa]))
+        bgs = list(set(cbsa_blockgroup[cbsa]))
         for bg in bgs:
-            output.write('%s\t%s\n'%(msa, bg))
+            output.write('%s\t%s\n'%(cbsa, bg))
