@@ -7,9 +7,12 @@ import csv
 import fiona
 
 
+
 #
-# Import MSA to blockgroup crosswalk 
+# Read preliminary data
 #
+
+# Crosswalk between blockgroups and CBSAs
 cbsa_to_bg = {}
 with open('data/crosswalks/cbsa_blockgroup.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
@@ -21,11 +24,21 @@ with open('data/crosswalks/cbsa_blockgroup.txt', 'r') as source:
             cbsa_to_bg[cbsa] = []
         cbsa_to_bg[cbsa].append(bg)
 
+# Names of CBSAs
+names = {}
+with open('data/misc/cbsa_names.txt', 'r') as source:
+    reader = csv.reader(source, delimiter='\t')
+    reader.next()
+    for rows in reader:
+        names[rows[0]] = rows[1]
+
+
 
 #
 # Perform the extraction
 #
 for cbsa in cbsa_to_bg:
+    print 'Build shapefile with blockgroups for %s'%names[cbsa]
     states = list(set([b[:2] for b in cbsa_to_bg[cbsa]]))
 
     ## Get all blockgroups

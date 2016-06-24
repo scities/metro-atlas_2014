@@ -25,7 +25,7 @@ project = partial(
 
 ## Import list of MSA
 cbsa = {}
-with open('data/names/cbsa_names.txt', 'r') as source:
+with open('data/misc/cbsa_names.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
     reader.next()
     for rows in reader:
