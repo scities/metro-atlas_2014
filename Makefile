@@ -96,7 +96,7 @@ data/crosswalks/cbsa_blockgroup.txt: data/crosswalks/cbsa_county.txt
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
 ## Shapefile blockgroups for each CBSA
-shapefile_blockgroups: data/misc/cbsa_names.txt
+shapefile_blockgroups: data/misc/cbsa_names.txt data/crosswalks/cbsa_blockgroup.txt
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/blockgroups.py
 
@@ -114,12 +114,12 @@ surface_blockgroups:
 
 # Tracts
 ## Crosswalk tracts and CBSA
-data/crosswalks/cbsa_tract:
+data/crosswalks/cbsa_tract.txt: data/crosswalks/cbsa_county.txt
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_tract.py
 
 ## Shapefile tracts for each CBSA
-shapefile_tracts:
+shapefile_tracts: data/misc/cbsa_names.txt data/crosswalks/cbsa_tract.txt
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/tracts.py
 

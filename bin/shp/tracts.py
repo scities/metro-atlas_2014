@@ -7,9 +7,13 @@ import csv
 import fiona
 
 
+
+
 #
 # Import MSA to tracts crosswalk 
 #
+
+# Crosswalk between tracts and CBSA
 cbsa_to_tr = {}
 with open('data/crosswalks/cbsa_tract.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
@@ -21,11 +25,22 @@ with open('data/crosswalks/cbsa_tract.txt', 'r') as source:
             cbsa_to_tr[cbsa] = []
         cbsa_to_tr[cbsa].append(tr)
 
+# Names of CBSAs
+names = {}
+with open('data/misc/cbsa_names.txt', 'r') as source:
+    reader = csv.reader(source, delimiter='\t')
+    reader.next()
+    for rows in reader:
+        names[rows[0]] = rows[1]
+
+
+
 
 #
 # Perform the extraction
 #
 for cbsa in cbsa_to_tr:
+    print "Build shapefile with tracts for %s"%names[cbsa]
     states = list(set([b[:2] for b in cbsa_to_tr[cbsa]]))
 
     ## Get all tracts
