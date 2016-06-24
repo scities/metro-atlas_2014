@@ -143,7 +143,7 @@ data/crosswalks/cbsa_county.txt: data/gz/List1.xls
 	python2 bin/crosswalks/cbsa_county.py
 
 ## Shapefile counties for each CBSA
-shapefile_counties:
+shapefile_counties: data/crosswalks/cbsa_county.txt data/misc/cbsa_names.txt 
 	mkdir -p data/shp/cbsa
 	python2 bin/shp/counties.py
 
@@ -166,4 +166,4 @@ surface_counties:
 # CLEAN #
 #########
 clean:
-	find data ! -name 'states_list.txt' -type d -exec rm -rf {} +
+	rm -r data/gz data/shp data/adjacency data/surface_area data/crosswalks data/misc/cbsa_names.txt
