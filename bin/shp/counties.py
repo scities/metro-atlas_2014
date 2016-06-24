@@ -8,7 +8,13 @@ import fiona
 
 
 
-# Import MSA to counties crosswalk 
+
+
+#
+# Read preliminary data
+#
+
+# Import CBSA to counties crosswalk 
 cbsa_to_ct = {}
 with open('data/crosswalks/cbsa_county.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
@@ -30,6 +36,15 @@ with fiona.open('data/shp/us/counties.shp', 'r',
         all_ct[f['properties']['GEOIDEC']] = f['geometry']
 
 
+# Names of CBSAs
+names = {}
+with open('data/misc/cbsa_names.txt', 'r') as source:
+    reader = csv.reader(source, delimiter='\t')
+    reader.next()
+    for rows in reader:
+        names[rows[0]] = rows[1]
+
+
 
 
 
@@ -37,7 +52,7 @@ with fiona.open('data/shp/us/counties.shp', 'r',
 # Perform the extraction
 #
 for cbsa in cbsa_to_ct:
-
+    print 'Build shapefiles with counties for %s'%names[cbsa]
 
     ## counties within cbsa
     cbsa_ct = {ct: all_ct[ct] for ct in cbsa_to_ct[cbsa]}

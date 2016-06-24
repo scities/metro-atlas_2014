@@ -17,7 +17,7 @@ csv.field_size_limit(sys.maxsize)
 # Import list of cities 
 #
 cbsa = {}
-with open('data/names/cbsa_names.txt', 'r') as source:
+with open('data/misc/cbsa_names.txt', 'r') as source:
     reader = csv.reader(source, delimiter='\t')
     reader.next()
     for rows in reader:
@@ -32,16 +32,16 @@ for i,city in enumerate(cbsa):
     print "Adjacency %s (%s/%s)"%(cbsa[city], i+1, len(cbsa))
 
     ## Import blockgroups
-    blocks = {}
+    counties = {}
     with fiona.open('data/shp/cbsa/%s/counties.shp'%city, 'r', 'ESRI Shapefile') as source:
         for f in source:
-            blocks[f['properties']['GEOIDEC']] = shape(f['geometry'])
+            counties[f['properties']['GEOIDEC']] = shape(f['geometry'])
 
 
     ## Compute adjacency list
-    adjacency = {b:[] for b in blocks}
-    for b0,b1 in itertools.permutations(blocks, 2):
-        if blocks[b1].touches(blocks[b0]):
+    adjacency = {b:[] for b in counties}
+    for b0,b1 in itertools.permutations(counties, 2):
+        if counties[b1].touches(counties[b0]):
             adjacency[b0].append(b1)
 
     ## Create necessary directories
@@ -51,7 +51,7 @@ for i,city in enumerate(cbsa):
 
 
     ## Save data
-    with open('data/adjacency/cbsa/%s/%s_adjacency_counties.txt'%(city, city), 'w') as output:
+    with open('data/adjacency/cbsa/%s/counties.txt'%(city), 'w') as output:
        output.write("COUNTIES FIPS\tNEIGHBOURS FIPS\n")
        for b0 in adjacency:
            output.write("%s"%b0)
