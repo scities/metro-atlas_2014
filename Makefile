@@ -108,7 +108,7 @@ adjacency_blockgroups:
 ## Compute the surface area of blockgroups
 surface_blockgroups:
 	mkdir -p data/surface_area/cbsa
-	python2 bin/surface/blockgroup.py
+	python2 bin/surface/blockgroups.py
 
 
 
@@ -131,7 +131,7 @@ adjacency_tracts:
 ## Compute the surface area of tracts
 surface_tracts:
 	mkdir -p data/surface_area/cbsa
-	python2 bin/surface/tract.py
+	python2 bin/surface/tracts.py
 
 
 
@@ -154,7 +154,7 @@ adjacency_counties:
 ## Compute the surface area of counties
 surface_counties:
 	mkdir -p data/surface_area/cbsa
-	python2 bin/surface/county.py
+	python2 bin/surface/counties.py
 
 
 
