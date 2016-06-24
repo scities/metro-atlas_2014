@@ -1,6 +1,7 @@
 # Author: Remi Louf <remilouf@sciti.es>
 # Date:   24/03/2016
 
+all: counties tracts blockgroups
 
 blockgroups: download_blockgroups  shapefile_blockgroups adjacency_blockgroups surface_blockgroups
 tracts: download_tracts  shapefile_tracts adjacency_tracts surface_tracts
@@ -165,4 +166,4 @@ surface_counties:
 # CLEAN #
 #########
 clean:
-	rm -r data
+	find data ! -name 'states_list.txt' -type d -exec rm -rf {} +
