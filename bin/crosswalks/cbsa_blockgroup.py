@@ -26,7 +26,7 @@ with open('data/crosswalks/cbsa_county.txt', 'r') as source:
 
 ## List of states
 states = []
-with open('data/states_list.txt') as source:
+with open('data/misc/states_list.txt') as source:
     line = source.readline()
     while line:
         states.append(line.replace('\n', ''))
