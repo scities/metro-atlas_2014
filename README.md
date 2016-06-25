@@ -7,21 +7,9 @@ Community Survey. Inspired by Mike Bostock's [us-atlas](https://github.com/mbost
 
 Data tabulation geographical levels for the 2014 US Census:
 
-* US boudaries (us)
-* MSA boundaries (msa)
 * Census Block Groups boundaries (blockgroups)
 * Census Tracts boundaries (tracts)
 * Counties boundaries (countries)
-
-## Future features
-
-The following features are obtained from the 2010 TIGER/Lines shapefiles and cut
-using the 2000 boundaries. Considering the conversion of 2000 TIGER/Lines files
-to shapefiles.
-
-* Roads
-* Water
-* Landmarks
 
 ## Use
 
@@ -33,11 +21,18 @@ make blockgroups
 ```
 
 The program will download the necessary data, and the shapefiles will be
-available in the folder `data/shp/msa_id/`
+available in the folder `data/shp/cbsa_id.
 
 To get other geographies, type the name of other geographies in parenthesis
 above instead of 'blockgroups'. If you type `make` alone, the program will
 download and prepare all geographies.
+
+CBSA Ids can be obtained by typing
+
+
+```bash 
+cat data/misc/cbsa_names.txt | grep a_few_letters_of_city_name
+```
 
 ## License
 
