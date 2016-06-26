@@ -1,8 +1,11 @@
 # US Metropolitan atlas 2014
 
-Provides an Atlas of the US Metropolitan areas delineated for the 2014 American
-Community Survey. Inspired by Mike Bostock's [us-atlas](https://github.com/mbostock/us-atlas).
+Provides an Atlas of the US core based statistical areas (CBSAs) delineated for the 2014 American
+Community Survey: shapefiles with blockgroups, tracts or counties for
+each CBSA.
 
+Inspired by Mike Bostock's [us-atlas](https://github.com/mbostock/us-atlas),
+much needed in my research.
 
 
 ## Features available
@@ -45,5 +48,5 @@ The code is distributed under the BSD License, see the LICENSE file for more det
 
 ```
 Copyright (c) Scities
-Rémi Louf <remi.louf@sciti.es>
+Rémi Louf <remi@sciti.es>
 ```
