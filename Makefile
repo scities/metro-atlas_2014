@@ -92,7 +92,7 @@ data/misc/cbsa_names.txt: data/gz/List1.xls
 
 # Blockgroups
 ## Crosswalk blockgroups and CBSA
-data/crosswalks/cbsa_blockgroup.txt: data/crosswalks/cbsa_county.txt
+data/crosswalks/cbsa_blockgroup.txt: download_blockgroups data/crosswalks/cbsa_county.txt
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_blockgroup.py
 
@@ -115,7 +115,7 @@ surface_blockgroups:
 
 # Tracts
 ## Crosswalk tracts and CBSA
-data/crosswalks/cbsa_tract.txt: data/crosswalks/cbsa_county.txt
+data/crosswalks/cbsa_tract.txt: download_tracts data/crosswalks/cbsa_county.txt
 	mkdir -p $(dir $@)
 	python2 bin/crosswalks/cbsa_tract.py
 
