@@ -102,7 +102,7 @@ shapefile_blockgroups: data/misc/cbsa_names.txt data/crosswalks/cbsa_blockgroup.
 	python2 bin/shp/blockgroups.py
 
 ## Adjacency matrix for blockgroups
-adjacency_blockgroups:
+adjacency_blockgroups: shapefile_blockgroups
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/blockgroups.py
 
@@ -125,7 +125,7 @@ shapefile_tracts: data/misc/cbsa_names.txt data/crosswalks/cbsa_tract.txt
 	python2 bin/shp/tracts.py
 
 ## Adjacency matrix for tracts
-adjacency_tracts:
+adjacency_tracts: shapefile_tracts
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/tracts.py
 
@@ -148,7 +148,7 @@ shapefile_counties: data/crosswalks/cbsa_county.txt data/misc/cbsa_names.txt
 	python2 bin/shp/counties.py
 
 ## Adjacency matrix for counties
-adjacency_counties:
+adjacency_counties: shapefile_counties
 	mkdir -p  data/adjacency/cbsa
 	python2 bin/adjacency/counties.py
 
