@@ -1,11 +1,19 @@
 # Author: Remi Louf <remilouf@sciti.es>
 # Date:   24/03/2016
 
+
+
 all: counties tracts blockgroups
 
 blockgroups: download_blockgroups  shapefile_blockgroups adjacency_blockgroups surface_blockgroups
 tracts: download_tracts  shapefile_tracts adjacency_tracts surface_tracts
 counties: download_counties  shapefile_counties adjacency_counties surface_counties
+
+
+
+
+
+
 
 
 #################
@@ -111,6 +119,11 @@ surface_blockgroups:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/blockgroups.py
 
+## Compute the distance between blockgroups
+distance_blockgroups:
+	mkdir -p data/distance/cbsa
+	python2 bin/distance/blockgroups.py
+
 
 
 # Tracts
@@ -134,6 +147,11 @@ surface_tracts:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/tracts.py
 
+## Compute the distance between tracts
+distance_tracts:
+	mkdir -p data/distance/cbsa
+	python2 bin/distance/tracts.py
+
 
 
 # Counties
@@ -156,6 +174,11 @@ adjacency_counties: shapefile_counties
 surface_counties:
 	mkdir -p data/surface_area/cbsa
 	python2 bin/surface/counties.py
+
+## Compute the distance between counties
+distance_counties:
+	mkdir -p data/distance/cbsa
+	python2 bin/distance/counties.py
 
 
 
